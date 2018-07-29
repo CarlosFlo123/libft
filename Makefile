@@ -6,7 +6,7 @@
 #    By: cflores- <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/07/11 15:27:16 by cflores-          #+#    #+#              #
-#    Updated: 2018/07/27 12:57:54 by cflores-         ###   ########.fr        #
+#    Updated: 2018/07/28 18:14:32 by cflores-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -73,7 +73,7 @@ SRC = ft_strlen.c \
 	  ft_lstdelone.c \
 	  ft_lstiter.c \
 	  ft_lstmap.c \
-	  ft_lstnew.c
+	  ft_lstnew.c 
 		
 OBJ = $(SRC:.c=.o)
 

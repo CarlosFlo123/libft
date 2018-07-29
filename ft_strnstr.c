@@ -6,37 +6,37 @@
 /*   By: cflores- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/14 17:33:19 by cflores-          #+#    #+#             */
-/*   Updated: 2018/07/23 21:38:38 by cflores-         ###   ########.fr       */
+/*   Updated: 2018/07/28 18:05:13 by cflores-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnstr(const char *s1, const char *s2, size_t s)
+char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
-	char	*ptr;
-	int		i;
-	int		j;
-	int		k;
+	register int	i;
+	register char	*hptr;
+	register char	*nptr;
+	register size_t	n;
 
-	k = ft_strlen(s2);
-	i = 0;
-	j = 0;
-	if (!k)
-		return ((char *)s1);
-	while (s1[i] != '\0' && i < (int)s)
+	hptr = (char *)haystack;
+	nptr = (char *)needle;
+	if (!(*nptr))
+		return (hptr);
+	n = ft_strlen(nptr) - 1;
+	len = len < ft_strlen(hptr) ? len : ft_strlen(hptr);
+	while (len > n++)
 	{
-		if (s1[i] == s2[j])
+		if (*hptr == *nptr)
 		{
-			if (j == 0)
-				ptr = &((char *)s1)[i];
-			j++;
+			i = -1;
+			while (nptr[++i])
+				if (hptr[i] != nptr[i])
+					break ;
+			if (nptr[i] == '\0')
+				return (hptr);
 		}
-		else
-			j = 0;
-		if (j == (int)ft_strlen(s2))
-			return (ptr);
-		i++;
+		hptr++;
 	}
 	return (NULL);
 }

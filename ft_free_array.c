@@ -1,32 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_countwords.c                                    :+:      :+:    :+:   */
+/*   ft_free_array.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cflores- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/26 13:38:32 by cflores-          #+#    #+#             */
-/*   Updated: 2018/07/28 18:15:43 by cflores-         ###   ########.fr       */
+/*   Created: 2018/07/28 18:19:19 by cflores-          #+#    #+#             */
+/*   Updated: 2018/07/28 18:19:38 by cflores-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_countwords(char const *str, char c)
+void	ft_free_array(char **arr)
 {
-	int		count;
-	int		i;
+	int i;
 
-	i = 0;
-	count = 0;
-	while (str[i])
+	if (!arr)
+		return ;
+	i = -1;
+	while (arr[++i])
 	{
-		while (str[i] == c)
-			i++;
-		if (str[i] != c && str[i] != '\0')
-			count++;
-		while (str[i] != c && str[i] != '\0')
-			i++;
+		free(arr[i]);
 	}
-	return (count);
+	free(arr);
+	arr = NULL;
 }

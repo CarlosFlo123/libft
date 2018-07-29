@@ -1,32 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_countwords.c                                    :+:      :+:    :+:   */
+/*   ft_capitalize.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cflores- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/26 13:38:32 by cflores-          #+#    #+#             */
-/*   Updated: 2018/07/28 18:15:43 by cflores-         ###   ########.fr       */
+/*   Created: 2018/07/28 18:10:05 by cflores-          #+#    #+#             */
+/*   Updated: 2018/07/28 18:10:24 by cflores-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_countwords(char const *str, char c)
+char	*ft_capitalize(char *s)
 {
-	int		count;
+	char	*new;
 	int		i;
 
+	if (!s)
+		return (NULL);
+	new = ft_strnew(ft_strlen(s));
+	new[0] = ft_toupper(s[0]);
 	i = 0;
-	count = 0;
-	while (str[i])
-	{
-		while (str[i] == c)
-			i++;
-		if (str[i] != c && str[i] != '\0')
-			count++;
-		while (str[i] != c && str[i] != '\0')
-			i++;
-	}
-	return (count);
+	while (*(s + ++i))
+		if (!ft_isalnum(s[i - 1]) && ft_isalnum(s[i]))
+			new[i] = ft_toupper(s[i]);
+		else
+			new[i] = s[i];
+	return (new);
 }

@@ -1,32 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_countwords.c                                    :+:      :+:    :+:   */
+/*   ft_realloc.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cflores- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/26 13:38:32 by cflores-          #+#    #+#             */
-/*   Updated: 2018/07/28 18:15:43 by cflores-         ###   ########.fr       */
+/*   Created: 2018/07/28 18:16:31 by cflores-          #+#    #+#             */
+/*   Updated: 2018/07/28 18:16:53 by cflores-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_countwords(char const *str, char c)
+void	*ft_realloc(void *ptr, size_t prev_size, size_t new_size)
 {
-	int		count;
-	int		i;
+	void	*new;
 
-	i = 0;
-	count = 0;
-	while (str[i])
+	if (!ptr)
+		return (NULL);
+	if (!(new = ft_memalloc(new_size)))
 	{
-		while (str[i] == c)
-			i++;
-		if (str[i] != c && str[i] != '\0')
-			count++;
-		while (str[i] != c && str[i] != '\0')
-			i++;
+		free(ptr);
+		return (NULL);
 	}
-	return (count);
+	ft_memcpy(new, ptr, prev_size < new_size ? prev_size : new_size);
+	free(ptr);
+	return (new);
 }

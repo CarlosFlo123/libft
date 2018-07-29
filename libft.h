@@ -6,7 +6,7 @@
 /*   By: cflores- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/13 22:45:46 by cflores-          #+#    #+#             */
-/*   Updated: 2018/07/27 03:08:07 by cflores-         ###   ########.fr       */
+/*   Updated: 2018/07/28 18:20:16 by cflores-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,5 +86,8 @@ int					ft_tolower(int c);
 int					ft_toupper(int c);
 int					ft_countwords(char const *str, char c);
 int					ft_wcount(char *s, char delim);
+char				*ft_capitalize(char *s);
+void				*ft_realloc(void *ptr, size_t prev_size, size_t new_size);
+void				ft_free_array(char **arr);
 
 #endif
